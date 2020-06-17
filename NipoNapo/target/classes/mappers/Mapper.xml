@@ -14,4 +14,21 @@
 		delete from post where post_pid = #{post_pid}
 	</delete>
 	
+	<update id="swap_request" parameterType="niponapo.server.dto.UserPostDTO">
+		update post set accept_pid =#{user_pid}, state=2 where post_pid=#{post_pid}
+	</update>
+	
+	<update id="swap_cancle" parameterType="int">
+		update post set accept_pid=null, state=1 where post_pid=#{post_pid}
+	</update>
+	
+	<update id="swap_accept" parameterType="int">
+		update post set state=4 where post_pid=#{post_pid}
+	</update>
+	
+	<select id="swap_list" parameterType="int" resultType="niponapo.server.dto.PostInfoDTO">
+		select post_pid,id,how,date,state,photo
+		from post
+		where user_pid=#{user_pid} or accept_pid=#{user_pid}
+	</select>
 </mapper>

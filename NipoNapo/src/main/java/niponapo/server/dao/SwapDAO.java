@@ -2,14 +2,9 @@ package niponapo.server.dao;
 
 import niponapo.server.dto.PostInfoDTO;
 import niponapo.server.dto.UserPostDTO;
-import niponapo.server.vo.PostVO;
 
-public interface Mapper {
-	
-	public void post_create(PostVO input);
-	
-	public void post_delete(int post_pid);
-	
+public interface SwapDAO {
+
 	public void swap_request(UserPostDTO input);
 	
 	public void swap_cancle(int post_pid);
